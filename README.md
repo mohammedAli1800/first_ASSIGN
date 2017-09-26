@@ -1,7 +1,3 @@
 # first_ASSIGN
 
-hello world
-
-web is funn
-
-i like web
+https://github.com/mohammedAli1800/first_ASSIGN
