@@ -7,6 +7,7 @@ if(isset($_GET["usr"])){
 
  $userData["mohammed"] = "1234";
  $userData["ali"] = "1122";
+  $userData["test"] = "0000";
          foreach($userData as $usrName => $Password){
                  if($usrName ==$_GET['usr']){
                          if($Password==$_GET['pass']){
