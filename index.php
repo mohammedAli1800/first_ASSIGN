@@ -18,7 +18,7 @@ if(isset($_GET["usr"])){
                         
                  }
          }
-echo("credentials is not correct!!!");
+echo("<p><h1>credentials is not correct!!!<p><h1>");
 }
  ?>
         <form>
