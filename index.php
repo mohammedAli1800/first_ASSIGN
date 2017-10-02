@@ -19,6 +19,8 @@ if(isset($_GET["usr"])){
                  }
          }
 echo("<p><h1>credentials is not correct!!!<p><h1>");
+	echo(" <a href= 'index.php'<p><hi> click here</h1><p> </a>");
+
 }
  ?>
         <form>
