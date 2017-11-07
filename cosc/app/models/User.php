@@ -2,37 +2,30 @@
 
 class User {
 
-    public $username;
-    public $password;
-    public $auth = false;
+
 
     public function __construct() {
         
     }
 
-    public function authenticate() {
+    public function authenticate($username,$password) {
         /*
          * if username and password good then
          * $this->auth = true;
          */
 		 
 		$db = db_connect();
-        $statement = $db->prepare("select * from users
-                                WHERE username = :name;
-                ");
-        $statement->bindValue(':name', $this->username);
-        $statement->execute();
-        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
-		
-		if (isset($rows)) {
-		    if($rows[0] ==$this->username){
-		        if($rows[1] ==md5($this->password)){
-                    $this->auth = true;
-                    $_SESSION['name'] = $rows[0]['username'];
-                    $_SESSION['password'] = $rows[0]['password'];
-                }
-
-            }
+		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$query="SELECT * FROM users WHERE username = :username AND password=:password";
+        $statement = $db->prepare($query);
+        $statement->execute(array(
+                'username'=>$_POST['username'],
+                'password'=>$_POST['password'],
+                ));
+        $rows=$statement->rowCount();
+		if ($rows) {
+                    $_SESSION['username'] = $rows['username'];
+                    $_SESSION['auth']=ture;
 
 		}
     }
@@ -40,13 +33,13 @@ class User {
 	public function register ($username, $password) {
 		$db = db_connect();
         $statement = $db->prepare("INSERT INTO users (username,password)"
-                . " VALUES (:name,:password); ");
+                . " VALUES (:username,:password) ");
 
-        $statement->bindValue(':name', $username);
-
+        $statement->bindValue(':username', $username);
         $statement->bindValue(':password', $password);
+        //$statement->bindValue(':username', $email);
+        
         $statement->execute();
-
 	}
 
 }

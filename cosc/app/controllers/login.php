@@ -4,33 +4,27 @@ class Login extends Controller {
     public function index() {
         $user = $this->model('User');
 
-        if(isset($_SESSION["logged"])){
-                $user->name= ($_POST['user']);
-                $user->pass=($_POST['pass']);
-                $user->pass=md5($user->pass);
-}
-        $user->authenticate();
-
-        if ($user->auth == true) {
-            $_SESSION['auth'] = true;
-        }
-        
+        if(isset($_POST['login'])){
+                $name= $_POST['user'];
+                $pass=$_POST['pass'];
+               // $pass->password_verify($pass, $hash);
+        $user->authenticate($name,$pass);
+       
         header('Location: /home');
+}
     }
 	
 	public function register () {
 		$user = $this->model('User');
-	        if(isset($_POST['register'])){
-
-                    $name= ($_POST['user']);
-                    //$email=($_POST['email']);
-                    $pass=($_POST['pass']);
-                    $hash=md5($pass);
-			
-			$user->register($name, $hash);
-			$_SESSION['auth'] = true;
-		}
-		
 		$this->view('home/register');
+	        if(isset($_POST['register'])){
+                    $name= $_POST['user'];
+                    //$email=($_POST['email']);
+                    $pass=$_POST['pass'];
+			$hash=password_hash($pass, PASSWORD_DEFAULT);
+			$user->register($name,$hash, $email);
+			
+		}	
+		
 	}
 }
