@@ -1,6 +1,6 @@
 <?php
 
-class Remind extends Controller {
+class Reminder extends Controller {
 	
     public function index($id = '') {		
         $r = $this->model('Reminders');
@@ -11,35 +11,26 @@ class Remind extends Controller {
 			//$this->view('remind/view', ['item' => $item] );
 			die;
 		}
-		$this->view('remind/index', [
+		$this->view('reminder/index', [
 		'list' => $list
 		] );
     }
 	public function update($id) {
 		$r = $this->model('Reminders');
         $item = $r->get_reminder($id);
-		$this->view('remind/update', ['item' => $item] );
+		$this->view('reminder/update', ['item' => $item] );
 			
-    }
-    	public function updateNotes($id) {
-		$r = $this->model('Reminders');
-        $item = $r->get_reminder($id);
-        	if(isset($_POST['create'])){
-        	        $subject=$_POST['subject'];
-        	         $description=$_POST['description'];
-        	         $r->create();
-        	}		
     }
 	
 	public function remove($id = '') {
 		$r = $this->model('Reminders');
 		$r->removeItem($id);
-		header('Location:/remind');
+		header('Location:/reminder');
     }
 	
-	public function create() {
+	public function Create() {
 	        	$r = $this->model('Reminders');
-	        	$this->view('remind/add');
+	        	$this->view('reminder/Create');
 	        	if(isset($_POST['create'])){
 	        	        $subject=$_POST['subject'];
 	        	         $description=$_POST['description'];

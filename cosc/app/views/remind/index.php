@@ -11,11 +11,12 @@
     <?php foreach ($data['list'] as $items){ ?>
         <tr>
             <td><?=$items['subject']?></td>
-			<td><a href="/remind/remove/<?=$items['id']?>">Remove</a> | 
-				<a href="/remind/<?=$items['id']?>">View</a> | 
-				<a href="/remind/update/<?=$items['id']?>">Update</a>
+			<td><a href="/reminder/remove/<?=$items['id']?>">Remove</a> | 
+				<a href="/reminder/<?=$items['id']?>">View</a> | 
+				<a href="/reminder/update/<?=$items['id']?>">Update</a>
 			</td>
         </tr>
     <?php }?>
 
 </table>
+<?php require_once '../app/views/templates/footer.php'?>

@@ -8,6 +8,13 @@ class Home extends Controller {
 	 
         $this->view('home/index', ['message' => $message]);
     }
+    public function getattempts($name = '') {		
+      $user = $this->model('User');
+	$message='ATTEMPTS ARE'.$_SESSION['user_attempts'];
+	 
+        $this->view('templates/footerPublic', ['message' => $message]);
+    }
+
 
     public function login($name = '') {
         $this->view('home/login');

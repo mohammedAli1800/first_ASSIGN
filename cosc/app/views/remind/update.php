@@ -13,3 +13,4 @@ Description:
 <button type="submit"> Update </button>
 
 </form>
+<?php require_once '../app/views/templates/footer.php'?>

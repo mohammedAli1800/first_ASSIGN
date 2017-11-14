@@ -1,4 +1,12 @@
-<div class="modal">
+<?php
+require_once('../app/core/utils.php');
+
+if (isset($_SESSION['auth']) == 1) {
+    header('Location: /home');
+}
+?>
+	 <p> attempts: <?=$data['message']?> </p>
+  <div class="modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -12,12 +20,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">Eimail Us</button>
-        <Label</LABEL>el type="button" class="btn btn-secondary" data-dismiss="modal">+1 (638)-725-7364</Label>
+        <Label type="button" class="btn btn-secondary" data-dismiss="modal">+1 (638)-725-7364</Label>
       </div>
     </div>
   </div>
 </div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
 </body>

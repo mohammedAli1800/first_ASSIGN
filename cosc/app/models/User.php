@@ -29,16 +29,22 @@ class User {
 
 		}
     }
+       public function LastLogin ($item) {
+        
+    $db=db_connect();
+    $query="INSERT INTO users (LastLogin) Values(:LastLogin) WHERE username=:username";
+    $statement=$db->prepare($query);
+    $statement->bindParam(':username',$_SESSION['username']);
+    $statement->bindParam(':LastLogin',$item);
+    $statement->execute();
+}
 	
 	public function register ($username, $password) {
 		$db = db_connect();
         $statement = $db->prepare("INSERT INTO users (username,password)"
                 . " VALUES (:username,:password) ");
-
         $statement->bindValue(':username', $username);
         $statement->bindValue(':password', $password);
-        //$statement->bindValue(':username', $email);
-        
         $statement->execute();
 	}
 
