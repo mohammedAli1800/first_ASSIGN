@@ -25,6 +25,7 @@ class User {
         $rows=$statement->rowCount();
 		if ($rows) {
                     $_SESSION['username'] = $rows['username'];
+                    $_SESSION['usertype']=$rows['logintype']
                     $_SESSION['auth']=ture;
 
 		}
